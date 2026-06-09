@@ -153,6 +153,4 @@ MIT License
 
 
 
-mongodb+srv://azan786kha_db_user:nUAwxsCC8AAXo5rT@cluster0.qzumyeo.mongodb.net/?appName=Cluster0
-
         
