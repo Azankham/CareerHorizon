@@ -16,14 +16,33 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
+
+const allowedOrigins = new Set([
+    "http://localhost:5173",
+    ...(process.env.CLIENT_URL || "")
+        .split(",")
+        .map((origin) => origin.trim())
+        .filter(Boolean)
+]);
 const corsOptions = {
-    origin:true,
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.has(origin)) {
+            callback(null, true);
+            return;
+        }
+
+        callback(new Error("Origin not allowed by CORS"));
+    },
     credentials:true
 }
 
 app.use(cors(corsOptions));
 
 const PORT = process.env.PORT || 5000;
+
+app.get("/api/health", (_req, res) => {
+    res.status(200).json({ status: "ok" });
+});
 
 // api's
 app.use("/api/v1/user", userRoute);

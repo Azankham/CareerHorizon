@@ -78,6 +78,10 @@ Distinct dashboards for different user types:
 
 ---
 
+## Deploying
+
+To deploy the frontend and backend to Render, follow the [deployment guide](./DEPLOYMENT.md).
+
 ## 🚀 **Getting Started**
 
 **1. Clone the repository:**
@@ -147,10 +151,3 @@ Contributions are welcome! Please open an issue or submit a pull request.
 ## 📄 **License**
 
 MIT License
-
-
-
-
-
-
-        
